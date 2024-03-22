@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function Signup() {
+  let [name, Setname] = useState("");
+  let [email, SetEmail] = useState("");
+  let [password, SetPassword] = useState("");
+  const auth = getAuth();
+
+  const handelSubmit = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log("Signup Successful!");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="bg-slate-900">
       <div className="container p-20">
@@ -22,7 +38,7 @@ function Signup() {
           </div>
           <div className="w-full max-w-md bg-gray-800  rounded-lg shadow-md p-6">
             <h2 className="text-2xl font-bold text-white mb-4">Sign Up</h2>
-            <form className="flex flex-col">
+            <div className="flex flex-col">
               <div className="flex space-x-4 mb-4">
                 <input
                   placeholder="First Name"
@@ -90,12 +106,13 @@ function Signup() {
                 </Link>
               </p>
               <button
+                onClick={handelSubmit}
                 className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
                 type="submit"
               >
                 Sign Up
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
