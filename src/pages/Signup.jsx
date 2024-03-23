@@ -3,18 +3,49 @@ import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function Signup() {
-  let [name, Setname] = useState("");
-  let [email, SetEmail] = useState("");
-  let [password, SetPassword] = useState("");
   const auth = getAuth();
+  let [firstName, SetFirstName] = useState("");
+  let [lastName, SetLastName] = useState("");
+  let [email, SetEmail] = useState("");
+  let [confirmEmail, SetConfirmEmail] = useState("");
+  let [password, SetPassword] = useState("");
+  let [confirmPassword, SetConfirmPassword] = useState("");
+  const [userError, SetUserError] = useState({
+    firstNameError: "",
+    lastNameError: "",
+    emailError: "",
+    confirmEmailError: "",
+    passwordError: "",
+    confirmPasswordError: "",
+  });
+
+  // console.log(firstName);
+  // console.log(lastName);
+  // console.log(email);
+  // console.log(confirmEmail);
+  // console.log(password);
+  // console.log(confirmPassword);
+
+  // const hendelchange = () => {};
 
   const handelSubmit = () => {
-    createUserWithEmailAndPassword(auth, email, password)
+    if (!firstName) {
+      SetUserError({firstNameError: "First Name is required !"});
+    }
+    createUserWithEmailAndPassword(
+      auth,
+      firstName,
+      lastName,
+      email,
+      confirmEmail,
+      password,
+      confirmPassword
+    )
       .then(() => {
         console.log("Signup Successful!");
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.code);
       });
   };
 
@@ -41,32 +72,41 @@ function Signup() {
             <div className="flex flex-col">
               <div className="flex space-x-4 mb-4">
                 <input
+                  onChange={(e) => SetFirstName(e.target.value)}
                   placeholder="First Name"
                   className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                   type="text"
                 />
+                {userError.firstNameError && (
+                  <p className=" text-start text-white text-xl py-1 px -1 bg-red-500 rounded-2xl w-fit">{userError.firstNameError}</p>
+                )}
                 <input
+                  onChange={(e) => SetLastName(e.target.value)}
                   placeholder="Last Name"
                   className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                   type="text"
                 />
               </div>
               <input
+                onChange={(e) => SetEmail(e.target.value)}
                 placeholder="Email"
                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                 type="email"
               />
               <input
+                onChange={(e) => SetConfirmEmail(e.target.value)}
                 placeholder="Confirm Email"
                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                 type="email"
               />
               <input
+                onChange={(e) => SetPassword(e.target.value)}
                 placeholder="Password"
                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                 type="password"
               />
               <input
+                onChange={(e) => SetConfirmPassword(e.target.value)}
                 placeholder="Confirm Password"
                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                 type="password"
