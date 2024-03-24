@@ -71,6 +71,7 @@ function Signup() {
             <h2 className="text-2xl font-bold text-white mb-4">Sign Up</h2>
             <div className="flex flex-col">
               <div className="flex space-x-4 mb-4">
+                <div>
                 <input
                   onChange={(e) => SetFirstName(e.target.value)}
                   placeholder="First Name"
@@ -80,6 +81,7 @@ function Signup() {
                 {userError.firstNameError && (
                   <p className=" text-start text-white text-xl py-1 px -1 bg-red-500 rounded-2xl w-fit">{userError.firstNameError}</p>
                 )}
+                </div>
                 <input
                   onChange={(e) => SetLastName(e.target.value)}
                   placeholder="Last Name"
