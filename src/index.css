@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.FistE {
+  clip-path: polygon(90% 0, 100% 34%, 100% 61%, 92% 100%, 0 100%, 0% 60%, 0 1%);
+}
+.FistB {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+
+
+
+}
