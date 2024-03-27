@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { MdClose } from "react-icons/md";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function Signup() {
+  let [fstName, setFstName] = useState("");
+  let [lastName, setLastName] = useState("");
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+  const [userError, setUserError] = useState({
+    fstNameError: "",
+    lastNameError: "",
+    emailError: "",
+    passwordError: "",
+  });
+  const auth = getAuth();
+  const hendelsubmit = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log("Signup successful!");
+      })
+      .catch((error) => {
+        console.log(error.code);
+      });
+  };
+
   return (
-    <body className="bg-gradient-to-r from-cyan-500 to-blue-500 h-screen">
+    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-screen">
       <div className=" container flex justify-center p-14">
         <div className="  mx-auto max-w-[432px] bg-white rounded-md shadow-lg drop-shadow-md">
           <div className="px-4 py-3 flex justify-between">
@@ -12,20 +35,7 @@ function Signup() {
               <p className="text-gray-500">It's quick and easy.</p>
             </div>
             <div className="text-gray-600">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-7 w-7"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
-                  d="M6 18L18 6M6 6l12 12"
-                ></path>
-              </svg>
+              <MdClose className=" text-3xl font-bold" />
             </div>
           </div>
           <hr className="bg-gray-600" />
@@ -33,6 +43,7 @@ function Signup() {
             <div className="space-x-3 flex">
               <div className="">
                 <input
+                  onChange={(e) => setFstName(e.target.value)}
                   className="flex-1 ring-1 ring-gray-400 rounded-md text-md px-2 py-2 outline-none bg-gray-100 focus:placeholder-gray-500"
                   type="text"
                   placeholder="First name"
@@ -43,9 +54,10 @@ function Signup() {
               </div>
               <div className="">
                 <input
+                  onChange={(e) => setLastName(e.target.value)}
                   type="text"
                   placeholder="Surname"
-                  class="flex-1 ring-1 ring-gray-400 rounded-md text-md px-2 py-2 outline-none bg-gray-100 focus:placeholder-gray-500"
+                  className="flex-1 ring-1 ring-gray-400 rounded-md text-md px-2 py-2 outline-none bg-gray-100 focus:placeholder-gray-500"
                 />
                 {/* <p className="FistB bg-red-500 text-lg font-normal text-white px-2 py-4 rounded-lg absolute top-[5%] ">
                   What's Your Surname?
@@ -54,6 +66,7 @@ function Signup() {
             </div>
             <div>
               <input
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full ring-1 ring-gray-400 rounded-md text-md px-2 py-2 outline-none bg-gray-100 focus:placeholder-gray-500"
                 type="text"
                 placeholder="Email address"
@@ -65,6 +78,7 @@ function Signup() {
             </div>
             <div>
               <input
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full ring-1 ring-gray-400 rounded-md text-md px-2 py-2 outline-none bg-gray-100 focus:placeholder-gray-500"
                 type="password"
                 placeholder="New password"
@@ -82,7 +96,7 @@ function Signup() {
                 Learn more
               </Link>
             </p>
-            <p class="text-gray-600 mt-4">
+            <p className="text-gray-600 mt-4">
               By clicking Sign Up, you agree to our
               <Link className="hover:text-blue-900 font-medium hover:underline">
                 Terms
@@ -100,13 +114,16 @@ function Signup() {
             </p>
           </div>
           <div className="text-center py-6">
-            <button className=" bg-[#086FA4] text-lg text-white font-bold px-16 py-1 rounded-md">
+            <button
+              onClick={hendelsubmit}
+              className=" bg-[#086FA4] text-lg text-white font-bold px-16 py-1 rounded-md"
+            >
               Sign Up
             </button>
           </div>
         </div>
       </div>
-    </body>
+    </div>
   );
 }
 
