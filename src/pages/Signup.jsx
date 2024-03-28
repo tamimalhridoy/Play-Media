@@ -16,6 +16,13 @@ function Signup() {
   });
   const auth = getAuth();
   const hendelsubmit = () => {
+    if (!fstName) {
+      setUserError({ fstNameError: "What's Your First Name?" });
+    } else if (!lastName) {
+      setUserError({ lastNameError: "What's Your Surname?" });
+    } else if (!email) {
+      setUserError({ emailError: "please Email Address you required " });
+    }
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         console.log("Signup successful!");
@@ -48,9 +55,11 @@ function Signup() {
                   type="text"
                   placeholder="First name"
                 />
-                {/* <p className="FistE bg-red-500 text-lg font-normal text-white px-2 py-3 rounded-lg absolute top-[18%] left-[-45%]">
-                  What's Your First Name?
-                </p> */}
+                {userError.fstNameError && (
+                  <p className="FistE bg-red-500 text-lg font-normal text-white px-2 py-3 rounded-lg absolute top-[18%] left-[-45%]">
+                    {userError.fstNameError}
+                  </p>
+                )}
               </div>
               <div className="">
                 <input
@@ -59,9 +68,11 @@ function Signup() {
                   placeholder="Surname"
                   className="flex-1 ring-1 ring-gray-400 rounded-md text-md px-2 py-2 outline-none bg-gray-100 focus:placeholder-gray-500"
                 />
-                {/* <p className="FistB bg-red-500 text-lg font-normal text-white px-2 py-4 rounded-lg absolute top-[5%] ">
-                  What's Your Surname?
-                </p> */}
+                {userError.lastNameError && (
+                  <p className="FistB bg-red-500 text-lg font-normal text-white px-2 py-4 rounded-lg absolute top-[5%] ">
+                    {userError.lastNameError}
+                  </p>
+                )}
               </div>
             </div>
             <div>
@@ -71,10 +82,12 @@ function Signup() {
                 type="text"
                 placeholder="Email address"
               />
-              {/* <p className="FistC bg-red-500 text-lg font-normal w-full text-white px-4 py-3 rounded-lg absolute top-[28%] left-[97%]">
-                You'll use this when you login in and if you ever need to reset
-                your password.
-              </p> */}
+              {userError.emailError &&(
+                <p className="FistC bg-red-500 text-lg font-normal w-full text-white px-4 py-3 rounded-lg absolute top-[28%] left-[97%]">
+                {userError.emailError}
+              </p>
+              )}
+              
             </div>
             <div>
               <input
