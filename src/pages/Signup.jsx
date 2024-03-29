@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdClose } from "react-icons/md";
 import {
   getAuth,
@@ -21,6 +21,7 @@ function Signup() {
     passwordError: "",
   });
   const auth = getAuth();
+  const navigate = useNavigate();
   const hendelsubmit = () => {
     if (!fstName) {
       setUserError({ fstNameError: "What's Your First Name?" });
@@ -33,7 +34,7 @@ function Signup() {
     } else {
       createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          sendEmailVerification(auth.currentUser)
+          sendEmailVerification(auth.currentUser);
           toast.success("Signup successful, Please verify your email ! ", {
             position: "top-center",
             autoClose: 3000,
@@ -44,6 +45,9 @@ function Signup() {
           setLastName("");
           setEmail("");
           setPassword("");
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000);
         })
         .catch((error) => {
           console.log(error.code);
