@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
+  const auth = getAuth();
+  const [userLoginData, setUserLoginData] = useState({
+    email: "",
+    password: "",
+  });
+  console.log(userLoginData);
   return (
     <div className="flex flex-col items-center justify-center h-screen dark">
       <div className='"w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6'>
         <h2 className="text-2xl font-bold text-gray-200 mb-4">Login</h2>
-        <form action="" className="flex flex-col">
+        <div className="flex flex-col">
           <input
+            onChange={(e) =>
+              setUserLoginData({ ...userLoginData, email: e.target.value })
+            }
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:outline-none focus:ring-1 focus:ring-blue-500  transition ease-in-out duration-150"
             type="email"
             placeholder="Email address"
           />
           <input
+            onChange={(e) =>
+              setUserLoginData({ ...userLoginData, password: e.target.value })
+            }
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:outline-none focus:ring-1 focus:ring-blue-500  transition ease-in-out duration-150"
             type="password"
             placeholder="Password"
@@ -47,7 +60,7 @@ function Login() {
           >
             Login
           </button>
-        </form>
+        </div>
       </div>
     </div>
   );
