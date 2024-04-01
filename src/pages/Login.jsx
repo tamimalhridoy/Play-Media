@@ -8,7 +8,9 @@ function Login() {
     email: "",
     password: "",
   });
+
   console.log(userLoginData);
+  const loginsubmit = () => {};
   return (
     <div className="flex flex-col items-center justify-center h-screen dark">
       <div className='"w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6'>
@@ -55,6 +57,7 @@ function Login() {
             </p>
           </div>
           <button
+            onClick={loginsubmit}
             className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
             type="submit"
           >
