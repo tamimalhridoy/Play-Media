@@ -10,7 +10,11 @@ function Login() {
   });
 
   console.log(userLoginData);
-  const loginsubmit = () => {};
+  const loginsubmit = () => {
+    if(!email){
+
+    }
+  };
   return (
     <div className="flex flex-col items-center justify-center h-screen dark">
       <div className='"w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6'>
