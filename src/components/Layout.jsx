@@ -7,8 +7,10 @@ function Layout() {
   return (
     <>
       <Header />
+      <hr className=" bg-slate-900 border-2" />
       <div className=" flex">
         <Navbar />
+        <hr className="border-8   h-screen" />
         <Outlet />
       </div>
     </>

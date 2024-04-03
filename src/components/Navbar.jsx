@@ -8,6 +8,7 @@ import { FaUserFriends } from "react-icons/fa";
 function Navbar() {
   return (
     <div className=" bg-white h-screen w-60">
+      {/* <hr className=" bg-slate-900 border-4 w-[100%] " /> */}
       <div>
         <ul className=" flex flex-col gap-5 mt-4">
           <li>
@@ -48,6 +49,7 @@ function Navbar() {
           </li>
         </ul>
       </div>
+      
     </div>
   );
 }
