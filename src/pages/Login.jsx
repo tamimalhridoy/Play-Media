@@ -11,9 +11,7 @@ function Login() {
 
   console.log(userLoginData);
   const loginsubmit = () => {
-    if(!email){
-
-    }
+    
   };
   return (
     <div className="flex flex-col items-center justify-center h-screen dark">
