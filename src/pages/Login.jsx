@@ -7,6 +7,7 @@ function Login() {
   const [userLoginData, setUserLoginData] = useState({
     email: "",
     password: "",
+    box: '',
   });
 
   console.log(userLoginData);
