@@ -6,8 +6,8 @@ function Login() {
   const auth = getAuth();
   const [userLoginData, setUserLoginData] = useState({
     email: "",
-    password: "",
-    box: '',
+   password: "",
+    
   });
 
   console.log(userLoginData);
