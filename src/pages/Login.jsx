@@ -5,8 +5,6 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 function Login() {
   const auth = getAuth();
   const [userLoginData, setUserLoginData] = useState({
-    email: "",
-   password: "",
     
   });
 
