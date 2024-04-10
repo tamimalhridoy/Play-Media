@@ -4,21 +4,35 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
   const auth = getAuth();
-  const [userError, setUserError] = useState({
-    emailError: "",
-    passwordError: "",
-  });
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [userLoginData, setUserLoginData] = useState({
     email: "",
     password: "",
   });
 
-  console.log(userLoginData);
-  const loginsubmit = () => {};
+  const loginsubmit = () => {
+    console.log(userLoginData);
+    signInWithEmailAndPassword(
+      auth,
+      userLoginData.email,
+      userLoginData.password
+    )
+      .than((res) => {
+        console.log("Login Successful", res);
+      })
+      .catch((err) => {
+        console.log(err.code);
+        if (err.code == "auth/invalid-email") {
+          setEmailError("Ivalid Email! pleace  ");
+        }
+      });
+  };
   return (
     <div className="flex flex-col items-center justify-center h-screen dark">
       <div className='"w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6'>
         <h2 className="text-2xl font-bold text-gray-200 mb-4">Login</h2>
+
         <div className="flex flex-col">
           <input
             onChange={(e) =>
@@ -28,6 +42,12 @@ function Login() {
             type="email"
             placeholder="Email address"
           />
+          {emailError && (
+            <p className="bg-red-500 text-white font-semibold px-2 py-2 rounded-lg mb-4 ">
+              {emailError}
+            </p>
+          )}
+
           <input
             onChange={(e) =>
               setUserLoginData({ ...userLoginData, password: e.target.value })
@@ -36,6 +56,7 @@ function Login() {
             type="password"
             placeholder="Password"
           />
+          {/* <p className="bg-red-500 text-white font-semibold px-2 py-2 rounded-lg mb-4 "></p> */}
           <div className=" flex items-center justify-between flex-wrap">
             <label
               htmlFor="remember-me"
