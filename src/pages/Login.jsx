@@ -4,8 +4,10 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
   const auth = getAuth();
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [userErr, setUserErr] = useState({
+    emailError: "",
+    passwordError: "",
+  });
   const [userLoginData, setUserLoginData] = useState({
     email: "",
     password: "",
@@ -42,9 +44,9 @@ function Login() {
             type="email"
             placeholder="Email address"
           />
-          {emailError && (
+          {userErr.emailError && (
             <p className="bg-red-500 text-white font-semibold px-2 py-2 rounded-lg mb-4 ">
-              {emailError}
+              {userErr.emailError}
             </p>
           )}
 
