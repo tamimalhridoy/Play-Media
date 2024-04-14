@@ -11,8 +11,7 @@ function Login() {
   const [userLoginData, setUserLoginData] = useState({
     email: "",
     password: "",
-    email: "",
-    password: "",
+    
   });
 
   const loginsubmit = () => {
