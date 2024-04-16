@@ -19,6 +19,10 @@ function Signup() {
     lastNameError: "",
     emailError: "",
     passwordError: "",
+    fstNameError: "",
+    lastNameError: "",
+    emailError: "",
+    passwordError: "",
   });
   const auth = getAuth();
   const navigate = useNavigate();
