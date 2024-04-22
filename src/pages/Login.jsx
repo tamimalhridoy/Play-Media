@@ -7,10 +7,7 @@ function Login() {
   const [userErr, setUserErr] = useState({
     emailError: "",
     passwordError: "",
-    emailError: "",
-    passwordError: "",
-    emailError: "",
-    passwordError: "",
+    
   });
   const [userLoginData, setUserLoginData] = useState({
     email: "",
