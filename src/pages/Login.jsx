@@ -3,34 +3,6 @@ import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
-  const auth = getAuth();
-  const [userErr, setUserErr] = useState({
-    emailError: "",
-    passwordError: "",
-    
-  });
-  const [userLoginData, setUserLoginData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const loginsubmit = () => {
-    console.log(userLoginData);
-    signInWithEmailAndPassword(
-      auth,
-      userLoginData.email,
-      userLoginData.password
-    )
-      .than((res) => {
-        console.log("Login Successful", res);
-      })
-      .catch((err) => {
-        console.log(err.code);
-        if (err.code == "auth/invalid-email") {
-          setEmailError("Ivalid Email! pleace  ");
-        }
-      });
-  };
   return (
     <div className="flex flex-col items-center justify-center h-screen dark">
       <div className='"w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6'>
