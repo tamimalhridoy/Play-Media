@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
   return (
@@ -10,18 +10,11 @@ function Login() {
 
         <div className="flex flex-col">
           <input
-            onChange={(e) =>
-              setUserLoginData({ ...userLoginData, email: e.target.value })
-            }
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:outline-none focus:ring-1 focus:ring-blue-500  transition ease-in-out duration-150"
             type="email"
             placeholder="Email address"
           />
-          {userErr.emailError && (
-            <p className="bg-red-500 text-white font-semibold px-2 py-2 rounded-lg mb-4 ">
-              {userErr.emailError}
-            </p>
-          )}
+          <p className="bg-red-500 text-white font-semibold px-2 py-2 rounded-lg mb-4 "></p>
 
           <input
             onChange={(e) =>
