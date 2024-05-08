@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
   return (
@@ -14,12 +13,9 @@ function Login() {
             type="email"
             placeholder="Email address"
           />
-          <p className="bg-red-500 text-white font-semibold px-2 py-2 rounded-lg mb-4 "></p>
+          {/* <p className="bg-red-500 text-white font-semibold px-2 py-2 rounded-lg mb-4 "></p> */}
 
           <input
-            onChange={(e) =>
-              setUserLoginData({ ...userLoginData, password: e.target.value })
-            }
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:outline-none focus:ring-1 focus:ring-blue-500  transition ease-in-out duration-150"
             type="password"
             placeholder="Password"
@@ -50,7 +46,6 @@ function Login() {
             </p>
           </div>
           <button
-            onClick={loginsubmit}
             className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
             type="submit"
           >

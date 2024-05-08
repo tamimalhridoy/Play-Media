@@ -23,11 +23,17 @@ function Registration() {
               type="text"
               placeholder="First name"
             />
+            {/* <p className="FistE bg-red-500 text-lg font-normal text-white px-2 py-3 rounded-lg absolute top-[18%] left-[-50%]">
+              What's Your First Name?
+            </p> */}
             <input
               className="flex-1 ring-1 ring-gray-400 rounded-md text-md px-2 py-2 outline-none bg-gray-100 focus:placeholder-gray-500"
               type="text"
               placeholder="Surname"
             />
+            {/* <p className="FistB bg-red-500 text-lg font-normal text-white px-2 py-4 rounded-lg absolute top-[5%] left-[43%] ">
+              What's Your Surname?
+            </p> */}
           </div>
           <div className=" flex flex-col gap-3">
             <input
@@ -35,11 +41,17 @@ function Registration() {
               type="text"
               placeholder="Email address"
             />
+            {/* <p className="FistC bg-red-500 text-lg font-normal w-full text-white px-4 py-3 rounded-lg absolute top-[28%] left-[97%]">
+              please Email Address you required
+            </p> */}
             <input
               className="flex-1 w-full ring-1 ring-gray-400 rounded-md text-md px-2 py-2 outline-none bg-gray-100 focus:placeholder-gray-500"
               type="text"
               placeholder="Password"
             />
+            {/* <p className="FistD bg-red-500 text-lg font-normal text-white px-2 py-3 rounded-lg absolute top-[37%] left-[-45%]">
+              What's Your Password?
+            </p> */}
           </div>
         </div>
         <div className="px-4 py-3">
@@ -52,7 +64,10 @@ function Registration() {
           </p>
           <p className="text-gray-600 mt-4">
             By clicking Sign Up, you agree to our
-            <Link className="hover:text-blue-900 font-medium hover:underline">
+            <Link
+              className="hover:text-blue-900 font-medium hover:underline"
+              to="/terms"
+            >
               Terms
             </Link>
             ,

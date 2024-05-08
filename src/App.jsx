@@ -17,6 +17,7 @@ import Notifications from "./pages/Notifications";
 import UserDetails from "./pages/UserDetails";
 import Friends from "./pages/Friends";
 import Registration from "./pages/Registration";
+import Terms from "./pages/Terms";
 
 function App() {
   const router = createBrowserRouter(
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/registration" element={<Registration />}></Route>
+        <Route path="/terms" element={<Terms/>}></Route>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
           <Route path="/video" element={<Video />}></Route>
@@ -35,6 +37,7 @@ function App() {
           <Route path="/notifications" element={<Notifications />}></Route>
           <Route path="/account" element={<UserDetails />}></Route>
           <Route path="/friends" element={<Friends />}></Route>
+          
         </Route>
       </Route>
     )
