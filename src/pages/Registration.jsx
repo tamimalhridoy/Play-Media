@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Registration() {
@@ -29,6 +33,7 @@ function Registration() {
     }
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
+        sendEmailVerification(auth.currentUser);     
         toast.success("Signup successful, Please verify your email!", {
           position: "top-center",
           autoClose: 3000,
