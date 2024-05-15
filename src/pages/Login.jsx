@@ -16,13 +16,15 @@ function Login() {
     email: "",
     Password: "",
   });
+  console.log(loginData);
   const auth = getAuth();
   const loginSummit = () => {
-    if (!loginData.email) {
+    if (loginData.email == "") {
       setEmailErr("Email is Required!");
-    } else if (!loginData.Password) {
+    } else if (loginData.Password == "") {
       setPasswordErr("Password is Required!");
-    } else  {
+    } else {
+      console.log("click");
       signInWithEmailAndPassword(auth, loginData.email, loginData.Password)
         .then((res) => {
           console.log("login succ", res);
@@ -33,9 +35,9 @@ function Login() {
             // setEmailErr("A valid email address@gmail.com");
             setEmailErr("Invalid Email! Please input a valid email.");
           }
-          // if (error.code == "auth/missing-password") {
-          //   passwordErr("Password length should be between 8 to 15 characters.");
-          // }
+          if (err.code == "auth/invalid-credential") {
+            setPasswordErr("Password length should be between 8 to 15 characters.");
+          }
         });
     }
   };
@@ -62,8 +64,8 @@ function Login() {
 
           <input
             onChange={(e) => {
-              setLoginData({ ...loginData, password: e.target.value }),
-              setPasswordErr("");
+              setLoginData({ ...loginData, Password: e.target.value }),
+                setPasswordErr("");
             }}
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:outline-none focus:ring-1 focus:ring-blue-500  transition ease-in-out duration-150"
             type="password"
