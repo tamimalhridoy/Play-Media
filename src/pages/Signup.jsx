@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdClose } from "react-icons/md";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function Signup() {
+  const [userList, setUserList] = useState({
+    fastName: "user",
+    surName: "hello",
+    email: "user@gmail.com",
+    password: "1234567",
+  });
+  const auth = getAuth();
+  const hendelsummit = () => {
+    createUserWithEmailAndPassword(auth, email, password);
+  };
+
   return (
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-screen">
       <div className=" container flex justify-center p-14">
@@ -79,7 +91,7 @@ function Signup() {
             </p>
           </div>
           <div className="text-center py-6">
-            <button className=" bg-[#086FA4] text-lg text-white font-bold px-16 py-1 rounded-md">
+            <button onClick={hendelsummit} className=" bg-[#086FA4] text-lg text-white font-bold px-16 py-1 rounded-md">
               Sign Up
             </button>
           </div>
