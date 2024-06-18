@@ -12,7 +12,9 @@ function Signup() {
   });
   const auth = getAuth();
   const hendelsummit = () => {
-    createUserWithEmailAndPassword(auth, email, password);
+    createUserWithEmailAndPassword(auth, email, password).then(()=>{
+      
+    })
   };
 
   return (

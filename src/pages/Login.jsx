@@ -15,6 +15,7 @@ function Login() {
   const [loginData, setLoginData] = useState({
     email: "",
     Password: "",
+    password;
   });
   console.log(loginData);
   const auth = getAuth();
