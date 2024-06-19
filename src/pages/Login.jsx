@@ -15,7 +15,8 @@ function Login() {
   const [loginData, setLoginData] = useState({
     email: "",
     Password: "",
-    password;
+    email: "",
+    Password: "",
   });
   console.log(loginData);
   const auth = getAuth();
@@ -37,7 +38,9 @@ function Login() {
             setEmailErr("Invalid Email! Please input a valid email.");
           }
           if (err.code == "auth/invalid-credential") {
-            setPasswordErr("Password length should be between 8 to 15 characters.");
+            setPasswordErr(
+              "Password length should be between 8 to 15 characters."
+            );
           }
         });
     }
